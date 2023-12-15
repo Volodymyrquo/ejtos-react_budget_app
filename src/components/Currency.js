@@ -1,29 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Currency = () => {
   const {dispatch } = useContext(AppContext);
-
-    const changeCurrency = (event)=>{
-        const val = event.target.value
-            dispatch({
-                type: 'CHG_CURRENCY',
-                payload: val,
-            })
-    }
-    
+const [target, setTarget]=useState('$ Dollar')
+const handleOnClick=(e)=>{
+const val = e.target.textContent.charAt(0)
+dispatch({
+    type: 'CHG_CURRENCY',
+    payload: val,
+})
+    setTarget(e.target.textContent)
+}
 
   return (
-        <div className='alert alert-secondary'> Currency {
-      <select name="Location" id="currency" onChange={changeCurrency}>
-        <option value="$">$ Dollar</option>
-        <option value="£">£ Pound</option>
-        <option value="€">€ Euro</option>
-        <option value="₹">₹ Ruppee</option>
-       
-      </select>	
-      }	
-    </div>
+
+<div className="dropdown">
+  <button className="btn  dropdown-toggle"  style={{backgroundColor:'lightgreen',color:"#fff"}} type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+   Currency ( {target} )
+  </button>
+  <ul className="dropdown-menu" style={{backgroundColor:'lightgreen',border:'1px solid green'}} aria-labelledby="dropdownMenuButton1">
+    <li><a onClick={handleOnClick} className="dropdown-item" href="#">$ Dollar</a></li>
+    <li><a onClick={handleOnClick} className="dropdown-item" href="#">£ Pound</a></li>
+    <li><a onClick={handleOnClick} className="dropdown-item" href="#">€ Euro</a></li>
+    <li><a onClick={handleOnClick} className="dropdown-item" href="#">₹ Ruppee</a></li>
+
+  </ul>
+</div>
+
     );
 };
 

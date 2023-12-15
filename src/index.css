@@ -10,8 +10,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+
+}
+.dropdown-menu li a:hover {
+    background-color: white !important;
 }
 
-.button-group {
-    margin-left: 2rem;
-}
