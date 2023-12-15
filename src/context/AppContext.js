@@ -11,7 +11,7 @@ export const AppReducer = (state, action) => {
                      if(currentExp.cost >= action.payload.cost)  {
                          currentExp.cost = currentExp.cost - action.payload.cost
                         } else {
-                            alert(`The value cannot exceed remaining fund ${currentExp.cost}`); 
+                            alert(`You cannot reduce the budget value lower than the spending`); 
                         } ;
                     }
                   
@@ -55,7 +55,7 @@ export const AppReducer = (state, action) => {
                         budget = state.budget + action.payload.cost
            
                         } else {
-                            alert(`The value cannot exceed remaining fund ${currentExp.cost}`);  
+                            alert(`The value cannot exceed remaining fund ${state.currency}${currentExp.cost}`);  
                                            }
                     } 
                     return currentExp
@@ -108,7 +108,7 @@ const initialState = {
         { id: "Human Resource", name: 'Human Resource', cost: 40 },
         { id: "IT", name: 'IT', cost: 500 },
     ],
-    currency: '£'
+    currency: '$'
 };
 
 // 2. Creates the context this is the thing our components import and use to get the state
